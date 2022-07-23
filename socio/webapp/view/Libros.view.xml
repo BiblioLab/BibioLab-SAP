@@ -1,0 +1,89 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns:core="sap.ui.core" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" controllerName="socio.controller.Libros" displayBlock="true">
+
+    <Page id="page" title="{i18n>title2}" showHeader="false">
+            <content>
+            <Title text="{i18n>title2}" level="H1"/>
+            <VBox>
+            <!-- <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+			<fb:filterGroupItems>
+				
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="DNI Socio" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboDni" items="{To_Libros}">
+                            <core:Item key="{DniSoc}" text="{DniSoc}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="Titulo" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboTitulo" items="{To_Libros}">
+                            <core:Item key="{Titulo}" text="{Titulo}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+                <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Fecha Prestamo" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<DatePicker id="datePickerFecha" valueFormat="yyyyMMMdd"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				
+			</fb:filterGroupItems>
+
+	    </fb:FilterBar>  -->
+        <!-- Llamada al fragment -->
+        <core:Fragment fragmentName="socio.view.fragments.FilterBar" type="XML" />
+        <VBox alignItems="End">
+            <Button icon="sap-icon://add-activity" text="Añadir mas de un libro" press="onAddLibros" />
+        </VBox>
+         <Table id="idTablaLibro" items="{To_Libros}">	
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                    
+                                    <ToolbarSpacer/>
+                                    <Button icon="sap-icon://add-coursebook" type="Emphasized" text="{i18n>Agregar2}" press="abrirPopUpCreacion"/>                                    
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>				
+                                <Text text="{i18n>isbn}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>dni}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>titulo}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>fechaprest}"/>				
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>acc}"/>				
+                            </Column>			
+                        </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <Text text="{Isbn}"/>
+                                <ObjectIdentifier title="{DniSoc}"/>
+                                <Text text="{Titulo}"/>
+                                <Text text="{FechaPrest}"/>
+                                <!--Botones-->
+                                <HBox width="100%" justifyContent="Center">
+                                    <Button icon="sap-icon://edit" type="Emphasized" class="sapUiTinyMarginEnd" press="editarLibro"/>
+                                    <Button icon="sap-icon://delete" type="Negative" press="borrarLibro"/>
+                                </HBox>                               
+                                
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+            </Table>
+            </VBox>
+                   
+        </content>
+    </Page>
+</mvc:View>

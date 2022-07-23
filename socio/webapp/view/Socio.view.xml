@@ -1,0 +1,87 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" controllerName="socio.controller.Socio" displayBlock="true">
+    <Page id="page" title="{i18n>title}" showHeader="false"> 
+            <content>
+            <Title text="{i18n>title}" level="H1" />
+            <VBox >         
+            
+                               
+            <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+			<fb:filterGroupItems>				
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="DNI Socio" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboDni" items="{/SocioSet}">
+                            <core:Item key="{DniSoc}" text="{DniSoc}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="Nombre" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboNombre" items="{/SocioSet}">
+                            <core:Item key="{NomSoc}" text="{NomSoc}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				
+			</fb:filterGroupItems>
+
+	    </fb:FilterBar>
+        
+        <Table id="idTablaSocio" >	
+        <!-- items="{/SocioSet}" -->
+                        <headerToolbar>
+                            <OverflowToolbar>
+                                <content>
+                                   <Button icon="sap-icon://add-contact" type="Emphasized" text="{i18n>Agregar}" press="abrirPopUpCreacion"/>                                    
+                                </content>
+                                <content>
+                                   <Button icon="sap-icon://arrow-down" type="Emphasized" text="Descargar lista de socios" press="onDataExport" />                                   
+                                </content>
+                            </OverflowToolbar>
+                        </headerToolbar>
+                        <columns>
+                            <Column>				
+                                <Text text="{i18n>dni}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>nom}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>dir}"/>
+                            </Column>
+                            <Column>
+                                <Text text="{i18n>tel}"/>				
+                            </Column>
+                            <Column hAlign="Center">
+                            <Text text="{i18n>acc}"/>
+                            </Column>
+                            			
+                        </columns>
+                    <items>
+                        <ColumnListItem type="Navigation" press="navegar">
+                            <cells>
+                                <!-- <ObjectIdentifier title="{DniSoc}"/>
+                                <Text text="{NomSoc}"/>
+                                <Text text="{DirSoc}"/>
+                                <Text text="{TelSoc}"/> -->
+                                <Text text="{29583211}"/>
+                                <Text text="{Luz}"/>
+                                <Text text="{Callao}"/>
+                                <Text text="{1234567}"/>
+                                <!--Botones-->
+                                <HBox width="100%" justifyContent="Center">
+                                    <Button icon="sap-icon://user-edit" type="Emphasized" class="sapUiTinyMarginEnd" press="abrirPopUpEdicion"/>
+                                    <Button icon="sap-icon://delete" type="Negative" press="borrarSocio"/>
+                                </HBox>                               
+                                
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+            </Table>
+            </VBox>
+                    
+        </content>
+    </Page>
+</mvc:View>

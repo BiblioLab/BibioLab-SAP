@@ -1,0 +1,9 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" >
+<Dialog id="dialogLibro" title="Libro" contentWidth="30%" busyIndicatorDelay="0">
+    <I:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
+        <l:content>
+            
+        </l:content>
+    </I:Grid>
+</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,13 @@
+<mvc:View controllerName="Socio.sociotile.controller.Tile"
+    xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
+    xmlns="sap.m">
+    <GenericTile
+        backgroundImage="/home/user/projects/socio_tile/img/Biblio4.png"
+        frameType="TwoByOne" press="onPressTile">
+        <TileContent footer="{i18n>footer}">
+            <NewsContent
+                contentText="{i18n>body}"
+                subheader="{i18n>subheader}" />
+        </TileContent>
+    </GenericTile>
+</mvc:View>

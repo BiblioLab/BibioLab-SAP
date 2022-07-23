@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
+	<Dialog id="dialogVuelo" title="Vuelo" contentWidth="30%" busyIndicatorDelay="0">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
+			<l:content>
+                <f:Form id="idFormSocio" editable="true">
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{socio>/dnisoc}"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="DNI Socio" required="true"/>
+                                    </f:label>
+                                </f:FormElement>                             
+                                
+                                
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{socio>/nomsoc}" maxLength="50"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="Nombre y aprellido" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{socio>/dirsoc}" maxLength="80"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="Direccion" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{socio>/telsoc}" maxLength="7"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="Telefono" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                    <f:layout>
+                        <f:ResponsiveGridLayout/>
+                    </f:layout>
+                </f:Form>
+			</l:content>
+		</l:Grid>
+		<buttons>
+			<Button text="Cancelar" press="onCancelar" type="Default"/>
+            <Button text="Crear" press="crearSocio" visible="{= !${vista>/esEditarSocio}}" type="Emphasized"/>
+            <Button text="Guardar" press="editarSocio" visible="{vista>/esEditarSocio}" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+</core:FragmentDefinition>

@@ -1,0 +1,54 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="Agregar Libris" id="dialogAddLibros" busyIndicatorDelay="0" contentWidth="50%">
+        <content>
+            <VBox>
+                <Table items="{AgregarLibros>/}" noDataText="Aún no se cargo ningún pasajero" fixedLayout="false">
+                    <columns>
+                        <Column width="3rem">
+                            <header>
+                                <Label text=""/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="ISBN"/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="TITULO"/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="FECHA DE PRESTAMO"/>
+                            </header>
+                        </Column>                        
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <core:Icon src="sap-icon://add-activity" />
+                                <Input value="{AgregarLibros>DniSoc}"/>
+                                <Input value="{AgregarLibros>Isbn}"/>
+                                <Input value="{AgregarLibros>Titulo"/>
+                                <Input value="{AgregarLibros>FechaPrest}"/>                                
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <HBox justifyContent="Center" class="sapUiTinyMarginTopBottom">
+                    <Button text="Agregar Libro" press="onAddLineLibros"/>
+                </HBox>
+            </VBox>
+        </content>
+        <buttons>
+            <Button text="Cancelar" press="onCloseDialogLibros"/>
+            <Button text="Guardar" press="onSaveLibros" type="Emphasized"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>
+

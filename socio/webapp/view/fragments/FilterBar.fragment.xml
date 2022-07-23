@@ -1,0 +1,33 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" >
+<fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
+			<fb:filterGroupItems>
+				
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="B" label="DNI Socio" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboDni" items="{To_Libros}">
+                            <core:Item key="{DniSoc}" text="{DniSoc}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				<fb:FilterGroupItem groupName="__$INTERNAL$" name="C" label="Titulo" labelTooltip="Tooltip Example" mandatory="true" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<ComboBox id="comboTitulo" items="{To_Libros}">
+                            <core:Item key="{Titulo}" text="{Titulo}"/>							
+						</ComboBox>
+					</fb:control>
+				</fb:FilterGroupItem>
+                <fb:FilterGroupItem groupName="__$INTERNAL$" name="A" label="Fecha Prestamo" partOfCurrentVariant="true" visibleInFilterBar="true">
+					<fb:control>
+						<DatePicker id="datePickerFecha" valueFormat="yyyyMMMdd"/>
+					</fb:control>
+				</fb:FilterGroupItem>
+
+				
+			</fb:filterGroupItems>
+
+	    </fb:FilterBar>
+
+
+</core:FragmentDefinition>

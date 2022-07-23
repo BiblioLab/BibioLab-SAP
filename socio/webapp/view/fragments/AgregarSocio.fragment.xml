@@ -1,0 +1,59 @@
+<core:FragmentDefinition xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+    xmlns:f="sap.ui.layout.form"
+    xmlns:l="sap.ui.layout">
+    <Dialog title="Agregar socio" id="dialogAddSocios" busyIndicatorDelay="0" contentWidth="50%">
+        <content>
+            <VBox>
+                <Table items="{AgregarSocios>/}" noDataText="Aún no se cargo ningún socio" fixedLayout="false">
+                    <columns>
+                        <Column width="3rem">
+                            <header>
+                                <Label text=""/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="DNI"/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="Nombre y Apellido"/>
+                            </header>
+                        </Column>
+                        
+                        <Column>
+                            <header>
+                                <Label text="Direccion"/>
+                            </header>
+                        </Column>
+                        <Column>
+                            <header>
+                                <Label text="Telefono"/>
+                            </header>
+                        </Column>
+                    </columns>
+                    <items>
+                        <ColumnListItem>
+                            <cells>
+                                <core:Icon src="sap-icon://employee" />
+                                <Input value="{AgregarSocio>DNI}"/>
+                                <Input value="{AgregarSocio>Nombre}"/>
+                                <Input value="{AgregarSocio>Direccion}"/>
+                                <Input value="{AgregarSocio>Telefono}"/>
+                            </cells>
+                        </ColumnListItem>
+                    </items>
+                </Table>
+                <HBox justifyContent="Center" class="sapUiTinyMarginTopBottom">
+                    <Button text="Agregar socio" press="onAddLineaSocio"/>
+                </HBox>
+            </VBox>
+        </content>
+        <buttons>
+            <Button text="Cancelar" press="onCloseDialogSocios"/>
+            <Button text="Guardar" press="onSaveSocios" type="Emphasized"/>
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

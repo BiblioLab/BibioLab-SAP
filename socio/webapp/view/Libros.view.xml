@@ -75,7 +75,7 @@
                                 <!--Botones-->
                                 <HBox width="100%" justifyContent="Center">
                                     <Button icon="sap-icon://edit" type="Emphasized" class="sapUiTinyMarginEnd" press="editarLibro"/>
-                                    <Button icon="sap-icon://delete" type="Negative" press="borrarLibro"/>
+                                    <Button icon="sap-icon://delete" type="Reject" press="borrarLibro"/>
                                 </HBox>                               
                                 
                             </cells>

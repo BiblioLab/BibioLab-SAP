@@ -73,7 +73,7 @@
                                 <!--Botones-->
                                 <HBox width="100%" justifyContent="Center">
                                     <Button icon="sap-icon://user-edit" type="Emphasized" class="sapUiTinyMarginEnd" press="abrirPopUpEdicion"/>
-                                    <Button icon="sap-icon://delete" type="Negative" press="borrarSocio"/>
+                                    <Button icon="sap-icon://delete" type="Reject" press="borrarSocio"/>
                                 </HBox>                               
                                 
                             </cells>

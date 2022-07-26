@@ -1,1 +1,12 @@
-/* Enter your custom styles here */
+.tileLayout {
+	float: left;
+    
+}
+
+.sapMTileCnt.News{
+    background-color: #035AA6;
+}
+
+.sapMGTHdrContent{
+    background: url(socio_tile/img/libros.jpg)
+}

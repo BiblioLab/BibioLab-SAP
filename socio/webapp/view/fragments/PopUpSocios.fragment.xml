@@ -1,6 +1,6 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:u="sap.ui.unified" xmlns:l="sap.ui.layout" xmlns:tnt="sap.tnt" xmlns:f="sap.ui.layout.form" xmlns:core="sap.ui.core">
-	<Dialog id="dialogVuelo" title="Vuelo" contentWidth="30%" busyIndicatorDelay="0">
-		<l:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
+	<Dialog id="dialogVuelo" title="Socio" contentWidth="30%" busyIndicatorDelay="0">
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
 			<l:content>
                 <f:Form id="idFormSocio" editable="true">
                     <f:formContainers>
@@ -8,7 +8,7 @@
                             <f:formElements>
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{socio>/dnisoc}"/>
+                                        <Input value="{socio>/DniSoc}"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="DNI Socio" required="true"/>
@@ -18,7 +18,7 @@
                                 
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{socio>/nomsoc}" maxLength="50"/>
+                                        <Input value="{socio>/NomSoc}" maxLength="50"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="Nombre y aprellido" required="true"/>
@@ -26,7 +26,7 @@
                                 </f:FormElement>
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{socio>/dirsoc}" maxLength="80"/>
+                                        <Input value="{socio>/DirSoc}" maxLength="80"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="Direccion" required="true"/>
@@ -34,7 +34,7 @@
                                 </f:FormElement>
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{socio>/telsoc}" maxLength="7"/>
+                                        <Input value="{socio>/TelSoc}" maxLength="7"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="Telefono" required="true"/>
@@ -50,10 +50,10 @@
                 </f:Form>
 			</l:content>
 		</l:Grid>
-		<buttons>
-			<Button text="Cancelar" press="onCancelar" type="Default"/>
-            <Button text="Crear" press="crearSocio" visible="{= !${vista>/esEditarSocio}}" type="Emphasized"/>
+		<buttons>			
+            <Button text="Guardar" press="crearSocio" visible="{= !${vista>/esEditarSocio}}" type="Emphasized"/>
             <Button text="Guardar" press="editarSocio" visible="{vista>/esEditarSocio}" type="Emphasized"/>
+            <Button text="Cancelar" press="onCancelar" type="Default"/>
 		</buttons>
 	</Dialog>
 </core:FragmentDefinition>

@@ -1,12 +1,12 @@
 sap.ui.define([
         "sap/ui/core/UIComponent",
         "sap/ui/Device",
-        "Socio/sociotile/model/models"
+        "socio/sociotile/model/models"
     ],
     function (UIComponent, Device, models) {
         "use strict";
 
-        return UIComponent.extend("Socio.sociotile.Component", {
+        return UIComponent.extend("socio.sociotile.Component", {
             metadata: {
                 manifest: "json"
             },

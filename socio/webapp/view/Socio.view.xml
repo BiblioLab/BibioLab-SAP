@@ -4,7 +4,7 @@
             <Title text="{i18n>title}" level="H1" />
             <VBox >         
             
-                               
+                              
             <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
 			<fb:filterGroupItems>				
 
@@ -29,15 +29,15 @@
 
 	    </fb:FilterBar>
         
-        <Table id="idTablaSocio" >	
-        <!-- items="{/SocioSet}" -->
+        <Table id="idTablaSocio" items="{/SocioSet}">	
+         
                         <headerToolbar>
                             <OverflowToolbar>
                                 <content>
                                    <Button icon="sap-icon://add-contact" type="Emphasized" text="{i18n>Agregar}" press="abrirPopUpCreacion"/>                                    
                                 </content>
                                 <content>
-                                   <Button icon="sap-icon://arrow-down" type="Emphasized" text="Descargar lista de socios" press="onDataExport" />                                   
+                                   <Button icon="sap-icon://arrow-down" type="Emphasized" text="Descargar lista de socios" press="onExport" />                                   
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>
@@ -62,14 +62,11 @@
                     <items>
                         <ColumnListItem type="Navigation" press="navegar">
                             <cells>
-                                <!-- <ObjectIdentifier title="{DniSoc}"/>
+                                <ObjectIdentifier title="{DniSoc}"/>
                                 <Text text="{NomSoc}"/>
                                 <Text text="{DirSoc}"/>
-                                <Text text="{TelSoc}"/> -->
-                                <Text text="{29583211}"/>
-                                <Text text="{Luz}"/>
-                                <Text text="{Callao}"/>
-                                <Text text="{1234567}"/>
+                                <Text text="{TelSoc}"/>
+                            
                                 <!--Botones-->
                                 <HBox width="100%" justifyContent="Center">
                                     <Button icon="sap-icon://user-edit" type="Emphasized" class="sapUiTinyMarginEnd" press="abrirPopUpEdicion"/>

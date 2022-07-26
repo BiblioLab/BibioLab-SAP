@@ -1,11 +1,11 @@
 {
-    "_version": "1.40.0",
+    "_version": "1.28.0",
     "sap.flp":{
         "type": "tile",
         "tileSize": "1x2"
     },
     "sap.app": {
-        "id": "Socio.sociotile",
+        "id": "socio.sociotile",
         "type": "application",
         "i18n": "i18n/i18n.properties",
         "applicationVersion": {
@@ -18,11 +18,11 @@
         "sourceTemplate": {
             "id": "@sap/generator-fiori:basic",
             "version": "1.6.7",
-            "toolsId": "11d020d1-92ce-4622-89f8-a5c25c3179f4"
+            "toolsId": "7121badb-ce2c-4f80-a644-01db727ff566"
         },
         "dataSources": {
             "mainService": {
-                "uri": "/sap/opu/odata/",
+                "uri": "/sap/opu/odata/sap/ZOS_ACADEMIA_BIBLIOTECAS_SRV/",
                 "type": "OData",
                 "settings": {
                     "annotations": [],
@@ -51,13 +51,13 @@
     "sap.ui5": {
         "flexEnabled": false,
         "rootView":{
-            "viewName":"Socio.sociotile.view.Tile",
+            "viewName":"socio.sociotile.view.Tile",
             "type": "XML",
             "async": true,
             "id":"Tile"
         },
         "dependencies": {
-            "minUI5Version": "1.102.1",
+            "minUI5Version": "1.84.1",
             "libs": {
                 "sap.m": {},
                 "sap.ui.core": {},
@@ -77,7 +77,7 @@
             "i18n": {
                 "type": "sap.ui.model.resource.ResourceModel",
                 "settings": {
-                    "bundleName": "Socio.sociotile.i18n.i18n"
+                    "bundleName": "socio.sociotile.i18n.i18n"
                 }
             },
             "": {
@@ -98,7 +98,7 @@
                 "routerClass": "sap.m.routing.Router",
                 "viewType": "XML",
                 "async": true,
-                "viewPath": "Socio.sociotile.view",
+                "viewPath": "socio.sociotile.view",
                 "controlAggregation": "pages",
                 "controlId": "app",
                 "clearControlAggregation": false
@@ -106,7 +106,7 @@
             "routes": [
                 {
                     "name": "RouteTile",
-                    "pattern": "RouteTile",
+                    "pattern": "RouteTile:",
                     "target": [
                         "TargetTile"
                     ]
@@ -122,5 +122,10 @@
                 }
             }
         }
-    }   
+        
+    },
+    "sap.cloud": {
+        "public": true,
+        "service": "socio-sociotile"
+    }
 }

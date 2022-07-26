@@ -2,10 +2,10 @@
     xmlns:core="sap.ui.core"
     xmlns:f="sap.ui.layout.form"
     xmlns:l="sap.ui.layout">
-    <Dialog title="Agregar Libris" id="dialogAddLibros" busyIndicatorDelay="0" contentWidth="50%">
+    <Dialog title="Agregar Libros" id="dialogAddLibros" busyIndicatorDelay="0" contentWidth="50%">
         <content>
             <VBox>
-                <Table items="{AgregarLibros>/}" noDataText="Aún no se cargo ningún pasajero" fixedLayout="false">
+                <Table items="{AgregarLibros>/}" noDataText="Aún no se cargo ningún libro" fixedLayout="false">
                     <columns>
                         <Column width="3rem">
                             <header>
@@ -24,17 +24,19 @@
                         </Column>
                         <Column>
                             <header>
-                                <Label text="FECHA DE PRESTAMO"/>
-                            </header>
+                              <Label text="FECHA DE PRESTAMO"/>                               
+                        
+                           </header> 
+                           
                         </Column>                        
                     </columns>
                     <items>
                         <ColumnListItem>
                             <cells>
                                 <core:Icon src="sap-icon://add-activity" />
-                                <Input value="{AgregarLibros>DniSoc}"/>
+                                <!-- <Input value="{AgregarLibros>DniSoc}"/> -->
                                 <Input value="{AgregarLibros>Isbn}"/>
-                                <Input value="{AgregarLibros>Titulo"/>
+                                <Input value="{AgregarLibros>Titulo}"/>
                                 <Input value="{AgregarLibros>FechaPrest}"/>                                
                             </cells>
                         </ColumnListItem>

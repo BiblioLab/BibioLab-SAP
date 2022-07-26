@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZOS_ACADEMIA_BIBLIOTECAS_SRV" xml:lang="es" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <EntityType Name="Socio" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="DniSoc"/>
+                </Key>
+                <Property Name="DniSoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="DNI Socio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="NomSoc" Type="Edm.String" Nullable="false" MaxLength="50" sap:unicode="false" sap:label="Nombre Socio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DirSoc" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Direccion Socio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="TelSoc" Type="Edm.String" Nullable="false" MaxLength="7" sap:unicode="false" sap:label="Telefono Socio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <NavigationProperty Name="To_Libros" Relationship="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Socio_Libro" FromRole="FromRole_Socio_Libro" ToRole="ToRole_Socio_Libro"/>
+            </EntityType>
+            <EntityType Name="Libro" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Isbn"/>
+                    <PropertyRef Name="DniSoc"/>
+                </Key>
+                <Property Name="Isbn" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="ISBN Libro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DniSoc" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="DNI Socio" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="Titulo" Type="Edm.String" Nullable="false" MaxLength="80" sap:unicode="false" sap:label="Titulo Libro" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FechaPrest" Type="Edm.String" Nullable="false" sap:unicode="false" sap:label="Fecha de prestamo" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <Association Name="Socio_Libro" sap:content-version="1">
+                <End Type="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Socio" Multiplicity="1" Role="FromRole_Socio_Libro"/>
+                <End Type="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Libro" Multiplicity="*" Role="ToRole_Socio_Libro"/>
+                <ReferentialConstraint>
+                    <Principal Role="FromRole_Socio_Libro">
+                        <PropertyRef Name="DniSoc"/>
+                    </Principal>
+                    <Dependent Role="ToRole_Socio_Libro">
+                        <PropertyRef Name="DniSoc"/>
+                    </Dependent>
+                </ReferentialConstraint>
+            </Association>
+            <EntityContainer Name="ZOS_ACADEMIA_BIBLIOTECAS_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="SocioSet" EntityType="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Socio" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <EntitySet Name="LibroSet" EntityType="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Libro" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:addressable="false" sap:content-version="1"/>
+                <AssociationSet Name="Socio_LibroSet" Association="ZOS_ACADEMIA_BIBLIOTECAS_SRV.Socio_Libro" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:content-version="1">
+                    <End EntitySet="SocioSet" Role="FromRole_Socio_Libro"/>
+                    <End EntitySet="LibroSet" Role="ToRole_Socio_Libro"/>
+                </AssociationSet>
+            </EntityContainer>
+            <atom:link rel="self" href="http://stks4hpil.eastus2.cloudapp.azure.com:8002/sap/opu/odata/sap/ZOS_ACADEMIA_BIBLIOTECAS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://stks4hpil.eastus2.cloudapp.azure.com:8002/sap/opu/odata/sap/ZOS_ACADEMIA_BIBLIOTECAS_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

@@ -1,18 +1,18 @@
 ## Application Details
 |               |
 | ------------- |
-|**Generation Date and Time**<br>Sat Jul 23 2022 20:42:17 GMT+0000 (Coordinated Universal Time)|
+|**Generation Date and Time**<br>Mon Jul 25 2022 22:12:15 GMT+0000 (Coordinated Universal Time)|
 |**App Generator**<br>@sap/generator-fiori-freestyle|
 |**App Generator Version**<br>1.6.7|
 |**Generation Platform**<br>SAP Business Application Studio|
 |**Floorplan Used**<br>simple|
-|**Service Type**<br>None|
-|**Service URL**<br>N/A
+|**Service Type**<br>SAP System (ABAP On Premise)|
+|**Service URL**<br>http://stks4hpil.eastus2.cloudapp.azure.com:8002/sap/opu/odata/sap/ZOS_ACADEMIA_BIBLIOTECAS_SRV
 |**Module Name**<br>socio_tile|
-|**Application Title**<br>Tile de Biblioteca|
-|**Namespace**<br>Socio|
+|**Application Title**<br>Tile de App Biblioteca|
+|**Namespace**<br>socio|
 |**UI5 Theme**<br>sap_fiori_3|
-|**UI5 Version**<br>1.102.1|
+|**UI5 Version**<br>1.84.1|
 |**Enable Code Assist Libraries**<br>False|
 |**Add Eslint configuration**<br>False|
 
@@ -26,6 +26,12 @@
 
 ```
     npm start
+```
+
+- It is also possible to run the application using mock data that reflects the OData Service URL supplied during application generation.  In order to run the application with Mock Data, run the following from the generated app root folder:
+
+```
+    npm run start-mock
 ```
 
 #### Pre-requisites:

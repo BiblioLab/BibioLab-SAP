@@ -39,8 +39,8 @@ sap.ui.define([
 							"tiles": [{
 								"tileType": "sap.ushell.ui.tile.StaticTile",
 								"properties": {
-									"title": "Tile de Biblioteca",
-									"targetURL": "#Sociosociotile-display"
+									"title": "Tile de App Biblioteca",
+									"targetURL": "#sociosociotile-display"
 								}
 							}]
 						}]
@@ -51,18 +51,18 @@ sap.ui.define([
 				"adapter": {
 					"config": {
 						"inbounds": {
-							"Sociosociotile-display": {
-								"semanticObject": "Sociosociotile",
+							"sociosociotile-display": {
+								"semanticObject": "sociosociotile",
 								"action": "display",
 
-								"title": "Tile de Biblioteca",
+								"title": "Tile de App Biblioteca",
 								"signature": {
 									"parameters": {}
 								},
 								"resolutionResult": {
 									"applicationType": "SAPUI5",
-									"additionalInformation": "SAPUI5.Component=Socio.sociotile",
-									"url": sap.ui.require.toUrl("Socio/sociotile")
+									"additionalInformation": "SAPUI5.Component=socio.sociotile",
+									"url": sap.ui.require.toUrl("socio/sociotile")
 								}
 							}
 						}

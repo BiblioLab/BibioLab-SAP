@@ -1,9 +1,61 @@
 <core:FragmentDefinition xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" >
 <Dialog id="dialogLibro" title="Libro" contentWidth="30%" busyIndicatorDelay="0">
-    <I:Grid defaultSpan="L12 M12 S12" width="auto" id="idGrid">
-        <l:content>
-            
-        </l:content>
-    </I:Grid>
-</Dialog>
+  
+		<l:Grid defaultSpan="L12 M12 S12" width="auto">
+        <!-- id="idGrid -->
+			<l:content>
+                <f:Form id="idFormLibro" editable="true">
+                    <f:formContainers>
+                        <f:FormContainer>
+                            <f:formElements>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{libro>/dnisoc}"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="DNI Socio" required="true"/>
+                                    </f:label>
+                                </f:FormElement>                             
+                                
+                                
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{libro>/Isbn}" />
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="ISBN" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{libro/Titulo}" maxLength="80"/>
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="Titulo" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                <f:FormElement>
+                                    <f:fields>
+                                        <Input value="{libro>/FechaPrest}" />
+                                    </f:fields>
+                                    <f:label>
+                                        <Label text="Fecha Prestamo" required="true"/>
+                                    </f:label>
+                                </f:FormElement>
+                                
+                            </f:formElements>
+                        </f:FormContainer>
+                    </f:formContainers>
+                    <f:layout>
+                        <f:ResponsiveGridLayout/>
+                    </f:layout>
+                </f:Form>
+			</l:content>
+		</l:Grid>
+		<buttons>
+			<Button text="Cancelar" press="onCancelar" type="Default"/>           
+            <Button text="Guardar" press="editarLibro" visible="{vista>/esEditarLibro}" type="Emphasized"/>
+		</buttons>
+	</Dialog>
+
 </core:FragmentDefinition>

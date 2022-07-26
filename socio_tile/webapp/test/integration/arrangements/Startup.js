@@ -3,7 +3,7 @@ sap.ui.define([
 ], function (Opa5) {
 	"use strict";
 
-	return Opa5.extend("Socio.sociotile.test.integration.arrangements.Startup", {
+	return Opa5.extend("socio.sociotile.test.integration.arrangements.Startup", {
 
 		iStartMyApp: function (oOptionsParameter) {
 			var oOptions = oOptionsParameter || {};
@@ -14,7 +14,7 @@ sap.ui.define([
 			// start the app UI component
 			this.iStartMyUIComponent({
 				componentConfig: {
-					name: "Socio.sociotile",
+					name: "socio.sociotile",
 					async: true
 				},
 				hash: oOptions.hash,

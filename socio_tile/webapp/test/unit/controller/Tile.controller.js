@@ -1,7 +1,7 @@
 /*global QUnit*/
 
 sap.ui.define([
-	"Socio/socio_tile/controller/Tile.controller"
+	"socio/socio_tile/controller/Tile.controller"
 ], function (Controller) {
 	"use strict";
 

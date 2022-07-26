@@ -5,16 +5,17 @@ sap.ui.define([
     "sap/ui/model/json/JSONModel",
     "sap/ui/core/UIComponent",
     "sap/ui/core/Fragment",
-    "sap/ui/core/mvc/Controller",
-    "sap/ui/model/json/JSONModel",
-    "sap/ui/core/util/Export",
-    "sap/ui/core/util/ExportTypeCSV",
+    
+    'sap/ui/export/library',
+	'sap/ui/export/Spreadsheet',
+  
 ],
     /**
      * @param {typeof sap.ui.core.mvc.Controller} Controller
      */
-    function (Controller,MessageToast, MessageBox, JSONModel, UIComponent, Fragment, Export, ExportTypeCSV ) { 
+    function (Controller,MessageToast, MessageBox, JSONModel, UIComponent, Fragment, exportLibrary, Spreadsheet) { 
         "use strict";
+        
 
         return Controller.extend("socio.controller.Socio", {
             onInit: function () {
@@ -67,7 +68,7 @@ sap.ui.define([
 
            },
            //UPDATE ENTITY
-           /*editarSocio:function(oEvent){
+            editarSocio:function(oEvent){
                let oModel = this.getView().getModel();
                let oSocio = this.getView().getModel("socio").getData();
 
@@ -88,16 +89,16 @@ sap.ui.define([
                    
                })
  
-           },*/
+           },
            //CREATE ENTITY
             crearSocio:function(){
                //obtener un modelo desde un controlador
                let oModel = this.getView().getModel();
                let oSocio = this.getView().getModel("socio").getData();        
-               oSocio.DniSoc ="";
-               oSocio.NomSoc = "";
-               oSocio.DirSoc = "";
-               oSocio.TelSoc = "";
+            //    oSocio.DniSoc ="";
+            //    oSocio.NomSoc = "";
+            //    oSocio.DirSoc = "";
+            //    oSocio.TelSoc = "";
                //SocioSet = path
                //create(path,oData,parametro(opcional))
                oModel.create("/SocioSet",oSocio,{
@@ -129,9 +130,7 @@ sap.ui.define([
            abrirPopUpEdicion: function(evento){
                this.getView().getModel("vista").setProperty("/esEditarSocio", true);
                //agarro los datos de la linea que estan en el modelo odata
-               let socio = evento.getSource().getBindingContext().getObject();
-
-             
+               let socio = evento.getSource().getBindingContext().getObject();         
                
 
                //seteo los datos al modelo json de socio
@@ -205,45 +204,74 @@ sap.ui.define([
                var NomSoc = this.getView().byId("comboNombre").getValue();
            },
            //Exportar a Excel
-           onDataExport: function (oEvent) {
-            var oExport = new Export({
-                exportType: new ExportTypeCSV({
-                    separatorChar: ";"
-                }),
-                models: this.getView().getModel(), // Me armo un Modelo con la tabla que va a Excel en Js
-                rows: {
-                    path: "/SocioSet"
-                },
-                columns: [{
-                    name: "Dni Socio",
-                    template: {
-                        content: "{DniSoc}"
-                    }
-                }, {
-                    name: "Nombre",
-                    template: {
-                        content: "{NomSoc}"
-                    }
-                }, {
-                    name: "Direccion",
-                    template: {
-                        content: "{DirSoc}"
-                    }
-                }, {
-                    name: "Telefono",
-                    template: {
-                        content: "{TelSoc}"
-                    }
-                }]
-            });
+           createColumnConfig: function() {
+			var aCols = [];
 
-            // Descargo el Archivo
-            oExport.saveFile().catch(function (oError) { // Si tirar Error mando un Mensaje
-                MessageBox.error("Error al descargar datos. Vuelva a intentarlo mas tarde" + oError);
-            }).then(function () {
-                oExport.destroy(); // Exportó bien
-            });
-        },
+			
+			aCols.push({
+				label: 'DNI',
+				property: 'DniSoc',
+				type: "String",
+                scale: 0             
+
+				
+			});
+
+			aCols.push({
+                label: 'Nombre y Apellido',
+				property: 'NomSoc',
+				type: "String"
+			});
+
+			aCols.push({
+                label: 'Direccion',
+				property: 'DirSoc',
+				type: "String"
+			});
+
+			aCols.push({
+                label: 'Telefono',
+				property: 'TelSoc',
+				type: "String"
+			});
+
+			
+			return aCols;
+		},
+
+		onExport: function() {
+			var aCols, oRowBinding, oSettings, oSheet, oTable;
+
+			if (!this._oTable) {
+				this._oTable = this.byId('idTablaSocio');
+			}
+
+			oTable = this._oTable;
+			oRowBinding = oTable.getBinding('items');
+			aCols = this.createColumnConfig();
+
+			oSettings = {
+				workbook: {
+					columns: aCols,
+					hierarchyLevel: 'Level'
+				},
+				dataSource: oRowBinding,
+				fileName: 'ListadoSocios.xlsx',
+				worker: false // We need to disable worker because we are using a MockServer as OData Service
+			};
+
+			oSheet = new Spreadsheet(oSettings);
+			oSheet.build().finally(function() {
+				oSheet.destroy();
+			});
+		},
+
+		onExit: function() {
+			this._oMockServer.stop();
+		}
+         
+        
         });
+       
     });
 

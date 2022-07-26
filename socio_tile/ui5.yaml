@@ -2,7 +2,7 @@
 
 specVersion: "2.5"
 metadata:
-  name: Socio.sociotile
+  name: socio.sociotile
 type: application
 server:
   customMiddleware:
@@ -17,7 +17,9 @@ server:
           url: https://ui5.sap.com
         backend:
           - path: /sap
-            url: http://localhost
+            url: http://stks4hpil.eastus2.cloudapp.azure.com:8002
+            client: '170'
+            destination: HB4_BACKEND_SAP_AEZ
     - name: fiori-tools-appreload
       afterMiddleware: compression
       configuration:
@@ -27,5 +29,5 @@ server:
     - name: fiori-tools-preview
       afterMiddleware: fiori-tools-appreload
       configuration:
-        component: Socio.sociotile
+        component: socio.sociotile
         ui5Theme: sap_fiori_3

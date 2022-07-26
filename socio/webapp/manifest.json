@@ -1,5 +1,5 @@
 {
-    "_version": "1.40.0",
+    "_version": "1.28.0",
     "sap.app": {
         "id": "socio",
         "type": "application",
@@ -150,7 +150,7 @@
     },
     "sap.cloud.portal":{
         "Socio-Display":{
-            "vizType":"Socio.sociotile"
+            "vizType":"socio.sociotile"
 
         }
         

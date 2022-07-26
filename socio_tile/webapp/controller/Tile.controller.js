@@ -6,9 +6,9 @@ sap.ui.define([
      */
     function (Controller) {
         "use strict";
-        var oController;
 
-        return Controller.extend("Socio.sociotile.controller.Tile", {
+        var oController;
+        return Controller.extend("socio.socio_tile.controller.Tile", {
             onInit: function () {
                 oController = this;
 

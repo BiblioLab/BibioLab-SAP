@@ -1,2 +1,22 @@
+.__title2-inner{
+    font-size: larger;
+    font: red;
+}
+__title0-inner{
 
-/* Enter your custom styles here */
+}
+.sapMTitle{
+    font-size: 220%;
+    font-family: fantasy;
+    color: #362D59;
+    text-align: center;
+}
+.sapUiCompFilterBar {
+    background-color: #04BFBF;
+}
+.sapMTableTH {
+    background-color: #F2B4AE;
+}
+.sapMTB{
+    background-color:#04BFBF ;
+}

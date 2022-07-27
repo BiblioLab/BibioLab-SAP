@@ -32,12 +32,22 @@ sap.ui.define([
                 oRouter.getRoute("RouteLibros").attachPatternMatched(this._onRouteMatched, this);
 
             },
+            //Navegar a socios
+            navegar: function(oEvent){
+                let libro = oEvent.getSource().getBindingContext().getObject();
+                var oRouter = UIComponent.getRouterFor(this);
+                oRouter.navTo("RouteSocio", {
+                    
+                    
+                });
+            },
 
              // C R U D //
            // D E L E T E //
            borrarLibro: function(oEvent){
             let oModel = this.getView().getModel();           
             let path = oEvent.getSource().getBindingContext().getPath();
+            let titulo = oEvent.getSource().getBindingContext().getObject().Titulo;
             MessageBox.warning("Se eliminara el libro. ¿Desea continuar?", {
                  actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
                  emphasizedAction: MessageBox.Action.OK,
@@ -45,7 +55,7 @@ sap.ui.define([
                      if(sAction === 'OK'){
                          oModel.remove(path,{
                              success: function(oLibro){
-                                 let sMsg = "Se elimino el libro " + oLibro.Titulo;
+                                 let sMsg = "Se elimino el libro " + titulo;
                                  MessageToast.show(sMsg);
                                  
                              }.bind(this),
@@ -64,10 +74,10 @@ sap.ui.define([
                let oLibro= this.getView().getModel("libro").getData();
 
                let path = oModel.createKey("/LibroSet",{
-                   
+                   Isbn: oLibro.Isbn,
                    DniSoc: oLibro.DniSoc
                });
-               let sMsg = "Se modifico el libro " + oLibro.DniSoc;
+               let sMsg = "Se modifico el libro " + oLibro.Titulo;
                oModel.update(path,oLibro,{
                    success: function(oLibro){                       
                        MessageToast.show(sMsg);
@@ -83,11 +93,10 @@ sap.ui.define([
            crearLibro:function(){
             //obtener un modelo desde un controlador
             let oModel = this.getView().getModel();
-            let oSocio = this.getView().getModel("libro").getData();        
-            oSocio.DniSoc ="";
-            oSocio.NomSoc = "";
-            oSocio.DirSoc = "";
-            oSocio.TelSoc = "";
+            let oLibro = this.getView().getModel("libro").getData();        
+           
+            oLibro.DniSoc = this.getView().getBindingContext().getObject().DniSoc;
+           
             //SocioSet = path
             //create(path,oData,parametro(opcional))
             oModel.create("/LibroSet",oLibro,{
@@ -111,19 +120,6 @@ sap.ui.define([
 
                         });
                         this.getView().bindElement({ path: path })
-
-                        /*events:{
-                            change: this._onBindingChange.bind(this),
-                            dataRequest: function(){
-
-                            }.bind(this),
-                            dataReceived: function(){
-
-                            }.bind(this)
-                        }*/
-
-
-                        //this._bindView(sObjectPath);
 
                     }.bind(this)
                 );
@@ -203,12 +199,24 @@ sap.ui.define([
                     }.bind(this),
                 })
 
-            },            
+            },     
+            abrirPopUpCreacion: function(){
+                //abrir popup en modo creacion
+                this.getView().getModel("vista").setProperty("/esEditarLibro", false);
+                let oDataLibro = {
+                    
+                    Isbn: "",
+                    Titulo: "",
+                    FechaPrest: ""
+                }
+                this.getView().getModel("libro").setData(oDataLibro);
+                this._abrirPopUpLibros();
+            },       
 
             abrirPopUpEdicion: function (evento) {
                 this.getView().getModel("vista").setProperty("/esEditarLibro", true);
                 //agarro los datos de la linea que estan en el modelo odata
-                let socio = evento.getSource().getBindingContext().getObject();
+                let libro = evento.getSource().getBindingContext().getObject();
 
 
                 //seteo los datos al modelo json de socio

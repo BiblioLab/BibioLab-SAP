@@ -15,8 +15,9 @@
                                 <content>
                                     
                                     <ToolbarSpacer/>
-                                    <Button icon="sap-icon://add-coursebook" type="Emphasized" text="{i18n>Agregar2}" press="onAddLibros" />
-                                   <!-- <Button icon="sap-icon://add-coursebook" type="Emphasized" text="{i18n>Agregar2}" press="abrirPopUpCreacion"/>                                     -->
+                                     <Button icon="sap-icon://learning-assistant" type="Default" text="{i18n>nav}" press="navegar"></Button> 
+                                    <!-- <Button icon="sap-icon://add-coursebook" type="Emphasized" text="{i18n>Agregar2}" press="onAddLibros" /> -->
+                                    <Button icon="sap-icon://add-coursebook" type="Default" text="{i18n>Agregar2}" press="abrirPopUpCreacion"/>                                   
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>

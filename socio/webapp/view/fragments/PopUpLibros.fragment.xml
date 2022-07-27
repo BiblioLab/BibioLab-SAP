@@ -1,4 +1,8 @@
-<core:FragmentDefinition xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" >
+<core:FragmentDefinition xmlns="sap.m" 
+xmlns:fb="sap.ui.comp.filterbar" 
+xmlns:core="sap.ui.core" 
+xmlns:l="sap.ui.layout"
+xmlns:f="sap.ui.layout.form" >
 <Dialog id="dialogLibro" title="Libro" contentWidth="30%" busyIndicatorDelay="0">
   
 		<l:Grid defaultSpan="L12 M12 S12" width="auto">
@@ -7,15 +11,7 @@
                 <f:Form id="idFormLibro" editable="true">
                     <f:formContainers>
                         <f:FormContainer>
-                            <f:formElements>
-                                <f:FormElement>
-                                    <f:fields>
-                                        <Input value="{libro>/dnisoc}"/>
-                                    </f:fields>
-                                    <f:label>
-                                        <Label text="DNI Socio" required="true"/>
-                                    </f:label>
-                                </f:FormElement>                             
+                            <f:formElements>                                                    
                                 
                                 
                                 <f:FormElement>
@@ -28,7 +24,7 @@
                                 </f:FormElement>
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{libro/Titulo}" maxLength="80"/>
+                                        <Input value="{libro>/Titulo}" maxLength="80"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="Titulo" required="true"/>
@@ -36,7 +32,8 @@
                                 </f:FormElement>
                                 <f:FormElement>
                                     <f:fields>
-                                        <Input value="{libro>/FechaPrest}" />
+                                    <!-- <Input value="{libro>/FechaPrest}" /> -->
+                                    <DatePicker placeholder="Ingrese Fecha"  valueFormat="yyyyMMdd" value="{libro>/FechaPrest}"/>
                                     </f:fields>
                                     <f:label>
                                         <Label text="Fecha Prestamo" required="true"/>
@@ -54,6 +51,8 @@
 		</l:Grid>
 		<buttons>
 			<Button text="Cancelar" press="onCancelar" type="Default"/>           
+            <Button text="Guardar" press="crearLibro" visible="{= !${vista>/esEditarLibro}}" type="Emphasized"/>
+
             <Button text="Guardar" press="editarLibro" visible="{vista>/esEditarLibro}" type="Emphasized"/>
 		</buttons>
 	</Dialog>

@@ -126,7 +126,7 @@
             "targets": {
                 "TargetSocio": {
                     "viewType": "XML",
-                    "transition": "slide",                    
+                    "transition": "flip",                    
                     "viewName": "Socio"
                 },
                 "TargetLibros": {

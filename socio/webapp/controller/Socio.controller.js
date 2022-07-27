@@ -45,14 +45,16 @@ sap.ui.define([
                let oModel = this.getView().getModel();
               
                let path = oEvent.getSource().getBindingContext().getPath();
+               let dni = oEvent.getSource().getBindingContext().getObject().DniSoc
                MessageBox.warning("Se eliminara el socio. ¿Desea continuar?", {
                     actions: [MessageBox.Action.OK, MessageBox.Action.CANCEL],
                     emphasizedAction: MessageBox.Action.OK,
                     onClose: function (sAction) {
                         if(sAction === 'OK'){
                             oModel.remove(path,{
+
                                 success: function(oSocio){
-                                    let sMsg = "Se elimino el socio " + oSocio.DniSoc;
+                                    let sMsg = "Se elimino el socio " + dni 
                                     MessageToast.show(sMsg);
                                     
                                 }.bind(this),
@@ -191,7 +193,7 @@ sap.ui.define([
             this._oDialogSocio.close();
         },
 
-           //
+           //Navecion a libros
            navegar: function(oEvent){
                let socio = oEvent.getSource().getBindingContext().getObject();
                var oRouter = UIComponent.getRouterFor(this);
@@ -202,7 +204,18 @@ sap.ui.define([
            },
            onSearch: function(){
                var NomSoc = this.getView().byId("comboNombre").getValue();
+               var DniSoc = this.getView().byId("comboDni").getValue();
+               var aFilters = [];
+               if(NomSoc){
+                aFilters.push(new sap.ui.model.Filter("NomSoc", sap.ui.model.FilterOperator.Contains, NomSoc));
+                }
+                if(DniSoc){
+                    aFilters.push(new sap.ui.model.Filter("DniSoc", sap.ui.model.FilterOperator.Contains, DniSoc));
+                }
+                var oTabla = this.getView().byId("idTablaSocio");
+                oTabla.getBinding("items").filter(aFilters);
            },
+
            //Exportar a Excel
            createColumnConfig: function() {
 			var aCols = [];

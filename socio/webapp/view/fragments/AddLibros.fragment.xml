@@ -24,7 +24,13 @@
                         </Column>
                         <Column>
                             <header>
-                              <Label text="FECHA DE PRESTAMO"/>                               
+                              <!-- <Label text="FECHA DE PRESTAMO"/>    -->
+                              <!-- <Label text="FECHA DE PRESTAMO" labelFor="DP1"/>  -->
+                               <DatePicker
+                                    id="DP1"
+                                    placeholder="FECHA DE PRESTAMO"
+                                    change="handleChange"
+                                    class="sapUiSmallMarginBottom"/>                            
                         
                            </header> 
                            

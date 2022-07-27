@@ -1,10 +1,10 @@
 <mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:fb="sap.ui.comp.filterbar" xmlns:core="sap.ui.core" controllerName="socio.controller.Socio" displayBlock="true">
+
     <Page id="page" title="{i18n>title}" showHeader="false"> 
             <content>
             <Title text="{i18n>title}" level="H1" />
-            <VBox >         
-            
-                              
+            <VBox >     
+             
             <fb:FilterBar reset="onReset" search="onSearch" showRestoreButton="true" showClearButton="true">
 			<fb:filterGroupItems>				
 
@@ -34,10 +34,10 @@
                         <headerToolbar>
                             <OverflowToolbar>
                                 <content>
-                                   <Button icon="sap-icon://add-contact" type="Emphasized" text="{i18n>Agregar}" press="abrirPopUpCreacion"/>                                    
+                                   <Button icon="sap-icon://add-contact" type="Default" text="{i18n>Agregar}" press="abrirPopUpCreacion"/>                                    
                                 </content>
                                 <content>
-                                   <Button icon="sap-icon://arrow-down" type="Emphasized" text="Descargar lista de socios" press="onExport" />                                   
+                                   <Button icon="sap-icon://arrow-down" type="Default" text="Descargar lista de socios" press="onExport" />                                   
                                 </content>
                             </OverflowToolbar>
                         </headerToolbar>
@@ -69,7 +69,7 @@
                             
                                 <!--Botones-->
                                 <HBox width="100%" justifyContent="Center">
-                                    <Button icon="sap-icon://user-edit" type="Emphasized" class="sapUiTinyMarginEnd" press="abrirPopUpEdicion"/>
+                                    <Button icon="sap-icon://user-edit" type="Default" class="sapUiTinyMarginEnd" press="abrirPopUpEdicion"/>
                                     <Button icon="sap-icon://delete" type="Reject" press="borrarSocio"/>
                                 </HBox>                               
                                 
